@@ -26,8 +26,8 @@ jobs:
 
       - name: Run Postman collection
         run: |
-          newman run collection.json \
-            -e environment.json \
+          newman run TrelloAPI.postman_collection.json \
+            -e Staging_Trello.postman_environment.json \
             --reporters cli,junit \
             --reporter-junit-export reports/junit-report.xml
 
