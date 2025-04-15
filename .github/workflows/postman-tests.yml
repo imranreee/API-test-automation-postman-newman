@@ -28,7 +28,7 @@ jobs:
           newman run TrelloAPI.postman_collection.json \
             --environment Staging_Trello.postman_environment.json \
             --reporters cli,htmlextra \
-            --reporter-htmlextra-export newman/html-report.html
+            --reporter-htmlextra-export docs/html-report.html
         continue-on-error: true
 
       - name: Upload HTML Report
@@ -36,4 +36,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: postman-html-report
-          path: newman/html-report.html
+          path: docs/html-report.html
+
+      - name: Commit HTML report to docs folder
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'actions@github.com'
+          git add docs/html-report.html
+          git commit -m "Add HTML report for GitHub Pages"
+          git push
