@@ -28,8 +28,8 @@ jobs:
 
       - name: Run Postman Collection with HTML Report
         run: |
-          newman run TrelloAPI.postman_collection.json \
-            --environment TrelloAPI.postman_collection_v1.0.0.json \
+          newman run TrelloAPI.postman_collection_v1.0.0.json \
+            --environment Staging_Trello.postman_environment.json \
             --reporters cli,htmlextra \
             --reporter-htmlextra-export docs/html-report.html
         continue-on-error: true
