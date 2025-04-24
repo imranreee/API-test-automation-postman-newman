@@ -26,13 +26,23 @@ jobs:
           npm install -g newman
           npm install -g newman-reporter-htmlextra
 
-      - name: Run Postman Collection with HTML Report
+      - name: Run Postman Collection via json file with HTML Report
         run: |
           newman run TrelloAPI.postman_collection_v1.0.0.json \
             --environment Staging_Trello.postman_environment_v1.0.0.json \
             --reporters cli,htmlextra \
             --reporter-htmlextra-export docs/html-report.html
         continue-on-error: true
+
+      - name: Run Postman Collection via publc link with HTML Report
+        run: |
+          newman run "https://api.postman.com/collections/7212228-992b798b-6da7-4d7c-a9fe-02a2f1704469?apikey=PMAK-680a08cab7d9d900016280fc-cef8034463ec6979bd1c94ed7d73b54cfb" \
+          -e "https://api.postman.com/environments/7212228-c58edf36-85c8-49e5-bcab-45bfbb997416?apikey=PMAK-680a08cab7d9d900016280fc-cef8034463ec6979bd1c94ed7d73b54cfb" \
+          -r cli,htmlextra \
+          --reporter-htmlextra-export \
+          --reporter-htmlextra-title "Trello API Test Report" \
+          --reporter-htmlextra-darkTheme true \
+          --reporter-htmlextra-logs true
 
       - name: Upload HTML Report
         if: always()
