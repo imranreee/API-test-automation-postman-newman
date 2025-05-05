@@ -1,3 +1,5 @@
+![Postman Newman Report](docs/postman_newman.png)
+
 ## Running Postman Collections via GitHub Actions (yml) file, with newnam HTML reports
 
 Running API collections via GitHub Actions is a great way to automate tests, integrate into CI/CD, and generate HTML test reports. there are two approaches:
