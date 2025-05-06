@@ -23,17 +23,17 @@ Running API collections via GitHub Actions is a great way to automate tests, int
 ## Test Results
 
 ### Summary
-<p align="center">
+<p align="left">
   <img src="https://github.com/imranreee/API-test-automation-newman/blob/main/docs/newman_report_summary.png" alt="Postman Newman Report" width="600"/>
 </p>
 
 ### Success Result
-<p align="center">
+<p align="left">
   <img src="https://github.com/imranreee/API-test-automation-newman/blob/main/docs/newman_report_success.png" alt="Postman Newman Report" width="600"/>
 </p>
 
 ### Request and Response details of a Single endpoint
 
-<p align="center">
+<p align="left">
   <img src="https://github.com/imranreee/API-test-automation-newman/blob/main/docs/newman_report_details.png" alt="Postman Newman Report" width="600"/>
 </p>
