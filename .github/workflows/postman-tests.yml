@@ -1,4 +1,4 @@
-name: Run Trello API Collection against push
+name: Run Trello API Collection
 
 on:
   push:
