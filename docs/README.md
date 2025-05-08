@@ -5,9 +5,14 @@
 </p>
 
 Running API collections via GitHub Actions is a great way to automate tests, integrate into CI/CD, and generate HTML test reports. there are two approaches:
-
 - Using a Public Link
 - Using an Exported JSON file
+---
+## In Scope
+- JS script to validate the response
+- Run Postman collection via GitHub Actions
+- Generate HTML reports automatically using newman 
+
 
 ---
 ## How to Run?
@@ -19,6 +24,36 @@ Running API collections via GitHub Actions is a great way to automate tests, int
 
 #### Step 3: Update the .yml file
 
+---
+## Example of Postman JS script
+
+```javascript
+
+pm.test('Status code is 200', () => {
+    pm.response.to.have.status(200);
+});
+
+const response = pm.response.json();
+pm.environment.set('cardId', response.id);
+
+pm.test('Verify format of attachment properties', () => {
+    const attachmentProperties = response.badges;
+    pm.expect(attachmentProperties).to.be.an('object');
+    pm.expect(attachmentProperties).to.have.property('attachments');
+    pm.expect(attachmentProperties).to.have.property('fogbugz');
+    pm.expect(attachmentProperties).to.have.property('checkItems');
+    pm.expect(attachmentProperties).to.have.property('checkItemsChecked');
+    pm.expect(attachmentProperties).to.have.property('checkItemsEarliestDue');
+    pm.expect(attachmentProperties).to.have.property('comments');
+    pm.expect(attachmentProperties).to.have.property('description');
+    pm.expect(attachmentProperties).to.have.property('due');
+    pm.expect(attachmentProperties).to.have.property('dueComplete');
+    pm.expect(attachmentProperties).to.have.property('lastUpdatedByAi');
+    pm.expect(attachmentProperties).to.have.property('start');
+    pm.expect(attachmentProperties).to.have.property('externalSource');
+});
+
+```
 ---
 ## Test Results
 
